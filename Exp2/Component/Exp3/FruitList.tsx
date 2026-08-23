@@ -46,12 +46,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    margin:30
   },
 
   title: {
     fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 15,
+    textAlign:'center'
   },
 
   item: {

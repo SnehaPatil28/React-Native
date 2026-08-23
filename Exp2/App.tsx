@@ -7,10 +7,14 @@
 
 import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import Welcome from './Component/Welcome';
-import Counter from './Component/Counter';
-import LogIn from './Component/LogIn';
-import StudentCard from './Component/StudentCard';
+import Welcome from './Component/Exp2/Welcome';
+import Counter from './Component/Exp2/Counter';
+import LogIn from './Component/Exp2/LogIn';
+import StudentCard from './Component/Exp2/StudentCard';
+import AboutUs from './Component/Exp3/AboutUs';
+import FlexExample from './Component/Exp3/FlexExample';
+import FormValidation from './Component/Exp3/FormValidation';
+import FruitList from './Component/Exp3/FruitList';
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -29,7 +33,11 @@ function AppContent() {
       {/* <Welcome /> */}
       {/* <Counter/> */}
       {/* <LogIn/> */}
-      <StudentCard name="Sneha Patil" prn="23UAM106" department="AI & ML" />
+      {/* <StudentCard name="Sneha Patil" prn="23UAM106" department="AI & ML" /> */}
+      {/* <AboutUs/> */}
+      {/* <FlexExample/> */}
+      {/* <FormValidation/> */}
+      <FruitList />
     </View>
   );
 }
