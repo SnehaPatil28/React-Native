@@ -1,54 +1,39 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import Welcome from './Component/Exp2/Welcome';
-import Counter from './Component/Exp2/Counter';
+import React, { useState } from 'react';
+import Registration from './Component/Exp4/registration';
+import Success from './Component/Exp4/success';
 import LogIn from './Component/Exp2/LogIn';
-import StudentCard from './Component/Exp2/StudentCard';
-import AboutUs from './Component/Exp3/AboutUs';
-import FlexExample from './Component/Exp3/FlexExample';
-import FormValidation from './Component/Exp3/FormValidation';
-import FruitList from './Component/Exp3/FruitList';
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
+  // const [screen, setScreen] = useState('login');
 
-  return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
-  );
-}
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
 
-function AppContent() {
-  return (
-    <View style={styles.container}>
-      {/* <Welcome /> */}
-      {/* <Counter/> */}
-      {/* <LogIn/> */}
-      {/* <StudentCard name="Sneha Patil" prn="23UAM106" department="AI & ML" /> */}
-      {/* <AboutUs/> */}
-      {/* <FlexExample/> */}
-      {/* <FormValidation/> */}
-      <FruitList />
-    </View>
-  );
-}
+  // if (screen === 'registration') {
+  //   return (
+  //     <Registration
+  //       onRegister={(email, password) => {
+  //         setEmail(email);
+  //         setPassword(password);
+  //         setScreen('login');
+  //       }}
+  //       onLoginPress={() => setScreen('login')}
+  //     />
+  //   );
+  // }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'lightyellow',
-  },
-});
+  // if (screen === 'success') {
+  //   return <Success onLogout={() => setScreen('login')} />;
+  // }
+
+  // return (
+  //   <LogIn
+  //     registeredEmail={email}
+  //     registeredPassword={password}
+  //     onLoginSuccess={() => setScreen('success')}
+  //     onCreateAccount={() => setScreen('registration')}
+  //   />
+  // );
+};
 
 export default App;
