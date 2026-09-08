@@ -5,121 +5,66 @@ import {
   View,
   Text,
   StyleSheet,
-  Alert,
+  TouchableOpacity,
 } from 'react-native';
 
-import CustomHeader from './Component/Exp5/CustomHeader';
-import CustomInput from './Component/Exp5/CustomInput';
-import CustomCard from './Component/Exp5/CustomCard';
-import CustomButton from './Component/Exp5/CustomButton';
+import ProfileScreen from './Component/Exp6/ProfileScreen';
+import SettingsScreen from './Component/Exp6/SettingsScreen';
+
+import {
+  COLORS,
+  SPACING,
+  FONT_SIZES,
+} from './Component/Exp6/theme';
 
 const App = () => {
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-
-  const handleSubmit = () => {
-    if (name.trim() === '' || email.trim() === '') {
-      Alert.alert(
-        'Error',
-        'Please fill all fields',
-      );
-      return;
-    }
-
-    Alert.alert(
-      'Success',
-      `Welcome ${name}!`,
-    );
-  };
+  const [screen, setScreen] = useState<
+    'profile' | 'settings'
+  >('profile');
 
   return (
     <View style={styles.container}>
 
-      {/* Custom Header */}
-      <CustomHeader
-        title="Registration"
-        leftIcon={
-          <Text style={styles.icon}>☰</Text>
-        }
-        rightIcon={
-          <Text style={styles.icon}>⋮</Text>
-        }
-      />
+      {screen === 'profile' ? (
+        <ProfileScreen />
+      ) : (
+        <SettingsScreen />
+      )}
 
-      <View style={styles.content}>
+      {/* Bottom Navigation */}
 
-        {/* First Card */}
-        <CustomCard>
+      <View style={styles.navigation}>
 
-          <Text style={styles.cardTitle}>
-            Create Account
+        <TouchableOpacity
+          onPress={() => setScreen('profile')}
+        >
+          <Text
+            style={[
+              styles.navText,
+              screen === 'profile'
+                ? styles.active
+                : null,
+            ]}
+          >
+            Profile
           </Text>
+        </TouchableOpacity>
 
-          <Text style={styles.description}>
-            Enter your details below
+        <TouchableOpacity
+          onPress={() => setScreen('settings')}
+        >
+          <Text
+            style={[
+              styles.navText,
+              screen === 'settings'
+                ? styles.active
+                : null,
+            ]}
+          >
+            Settings
           </Text>
-
-          {/* Name Input */}
-          <CustomInput
-            label="Name"
-            value={name}
-            onChangeText={setName}
-            placeholder="Enter your name"
-          />
-
-          {/* Email Input */}
-          <CustomInput
-            label="Email"
-            value={email}
-            onChangeText={setEmail}
-            placeholder="Enter your email"
-          />
-
-          {/* Register Button */}
-          <CustomButton
-            title="Register"
-            onPress={handleSubmit}
-            color="#2196F3"
-          />
-
-          {/* Cancel Button */}
-          <CustomButton
-            title="Cancel"
-            onPress={() => {
-              setName('');
-              setEmail('');
-              Alert.alert('Cancelled');
-            }}
-            color="#F44336"
-          />
-
-        </CustomCard>
-
-        {/* Second Card */}
-        <CustomCard style={styles.secondCard}>
-
-          <Text style={styles.cardTitle}>
-            Reusable Components
-          </Text>
-
-          <Text style={styles.description}>
-            This card uses the same CustomCard
-            component with different content.
-          </Text>
-
-          <CustomButton
-            title="Learn More"
-            onPress={() =>
-              Alert.alert(
-                'Reusable Components',
-                'Components can be reused with different props.',
-              )
-            }
-            color="#4CAF50"
-          />
-
-        </CustomCard>
+        </TouchableOpacity>
 
       </View>
 
@@ -130,32 +75,28 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: COLORS.background,
   },
 
-  content: {
-    padding: 15,
+  navigation: {
+    height: 60,
+    backgroundColor: COLORS.card,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    borderTopWidth: 1,
+    borderTopColor: COLORS.border,
   },
 
-  icon: {
-    color: '#FFFFFF',
-    fontSize: 24,
-  },
-
-  cardTitle: {
-    fontSize: 20,
+  navText: {
+    fontSize: FONT_SIZES.medium,
     fontWeight: 'bold',
-    marginBottom: 5,
+    color: COLORS.secondaryText,
+    padding: SPACING.small,
   },
 
-  description: {
-    fontSize: 14,
-    color: '#666666',
-    marginBottom: 15,
-  },
-
-  secondCard: {
-    marginTop: 5,
+  active: {
+    color: COLORS.primary,
   },
 });
 
